@@ -2,6 +2,7 @@
 #pragma config(Motor,  motor1,          leftDriveMotor, tmotorVexIQ, PIDControl, driveLeft, encoder)
 #pragma config(Motor,  motor3,          leftClawMotor, tmotorVexIQ, PIDControl, encoder)
 #pragma config(Motor,  motor7,          rightDriveMotor, tmotorVexIQ, PIDControl, reversed, driveRight, encoder)
+#pragma config(Sensor, port8,           distanceSensor,     sensorVexIQ_Distance)
 #pragma config(Motor,  motor9,          rightClawMotor, tmotorVexIQ, PIDControl, reversed, encoder)
 #pragma config(Motor,  motor10,         middleDriveMotor, tmotorVexIQ, PIDControl, encoder)
 
@@ -29,12 +30,12 @@ static void fourWheelDrive(const int ecount, const int speed)
 task main()
 {
 	middleDrive(-35, 100);
-	moveClaw(-170, 75);
+	moveClaw(-190, 75);
 	fourWheelDrive(950, 50);
-	moveClaw(-260, 75);
+	moveClaw(-240, 75);
 	fourWheelDrive(-950, 75);
-	middleDrive(775, 75);
-	fourWheelDrive(-480, 50);
+	middleDrive(755, 60);
+	fourWheelDrive(-475, 50);
 	moveClaw(-200, 75);
 	wait(1, seconds);
 	moveClaw(150, 100);

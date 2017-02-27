@@ -33,8 +33,8 @@ task main()
 	fourWheelDrive(950, 50);
 	moveClaw(-270, 75);
 	fourWheelDrive(-950, 75);
-	middleDrive(770, 75);
-	fourWheelDrive(-480, 50);
+	middleDrive(755, 60);
+	fourWheelDrive(-475, 50);
 	moveClaw(-200, 100);
 	wait(1, seconds);
 	moveClaw(150, 100);
