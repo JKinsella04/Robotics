@@ -37,9 +37,10 @@ static void fourWheelCurve(const int ecount, const int speed1, const int speed2)
 
 task main()
 {
-	moveClaw(-700, 75);
-	middleDrive(780, 100);
-	fourWheelCurve(-1100, 100, 95);
+//	moveClaw(-700, 75);
+	middleDrive(770, 75);
+//	fourWheelCurve(-50, 25, 25);
+	fourWheelCurve(-1280, 65, 65);
 
 	stopAllMotors();
 	wait(10, minutes);  // Holds robot in position
