@@ -27,15 +27,37 @@ static void fourWheelDrive(const int ecount, const int speed)
 	waitUntilMotorStop(leftDriveMotor);
 }
 
+static void realign(const float deg, const int speed)
+{
+	if (getGyroDegreesFloat(gyroSensor) < deg) {
+		displaySensorValues(line1, gyroSensor);
+		setMotorSpeed(leftDriveMotor, -speed);
+		setMotorSpeed(rightDriveMotor, speed);
+		waitUntil(getGyroDegreesFloat(gyroSensor) >= deg);
+	}
+	if (getGyroDegreesFloat(gyroSensor) > deg) {
+		displaySensorValues(line1, gyroSensor);
+		setMotorSpeed(leftDriveMotor, speed);
+		setMotorSpeed(rightDriveMotor, -speed);
+		waitUntil(getGyroDegreesFloat(gyroSensor) <= deg);
+	}
+	stopAllMotors();
+	setMotor(middleDriveMotor, -speed);
+	wait(1, seconds);
+	stopAllMotors();
+}
+
 task main()
 {
 	middleDrive(-35, 100);
+	resetGyro(gyroSensor);
 	moveClaw(-190, 75);
 	fourWheelDrive(950, 50);
 	moveClaw(-240, 75);
 	fourWheelDrive(-950, 75);
+	realign(0.0, 25);
 	middleDrive(745, 50);
-	fourWheelDrive(-475, 50);
+	fourWheelDrive(-455, 50);
 	moveClaw(-230, 75);
 	wait(1, seconds);
 	moveClaw(150, 100);
