@@ -1,5 +1,3 @@
-#pragma config(Sensor, port4,  gyroSensor,     sensorVexIQ_Gyro)
-#pragma config(Sensor, port8,  distanceSensor, sensorVexIQ_Distance)
 #pragma config(Motor,  motor1,          leftDriveMotor, tmotorVexIQ, PIDControl, driveLeft, encoder)
 #pragma config(Motor,  motor3,          leftClawMotor, tmotorVexIQ, PIDControl, reversed, encoder)
 #pragma config(Motor,  motor7,          rightDriveMotor, tmotorVexIQ, PIDControl, reversed, driveRight, encoder)
@@ -20,13 +18,11 @@ task main()
 		displayMotorValues(line1, leftDriveMotor);
 		displayMotorValues(line2, middleDriveMotor);
 		displayMotorValues(line3, leftClawMotor);
-		displaySensorValues(line4, gyroSensor);
-		displaySensorValues(line5, distanceSensor);
 
 
 		tankControl(ChD, ChA, 2);
 		armControl(leftClawMotor, BtnLUp, BtnLDown, 50);
 		armControl(rightClawMotor, BtnLUp, BtnLDown, 50);
-		armControl(middleDriveMotor, BtnEUp, BtnEDown, 75);
+		armControl(middleDriveMotor, BtnEDown, BtnEUp, 75);
 		}
 }

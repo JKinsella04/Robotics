@@ -2,7 +2,6 @@
 #pragma config(Motor,  motor1,          leftDriveMotor, tmotorVexIQ, PIDControl, driveLeft, encoder)
 #pragma config(Motor,  motor3,          leftClawMotor, tmotorVexIQ, PIDControl, encoder)
 #pragma config(Motor,  motor7,          rightDriveMotor, tmotorVexIQ, PIDControl, reversed, driveRight, encoder)
-#pragma config(Sensor, port8,           distanceSensor,     sensorVexIQ_Distance)
 #pragma config(Motor,  motor9,          rightClawMotor, tmotorVexIQ, PIDControl, reversed, encoder)
 #pragma config(Motor,  motor10,         middleDriveMotor, tmotorVexIQ, PIDControl, encoder)
 
@@ -47,19 +46,21 @@ static void realign(const float deg, const int speed)
 	stopAllMotors();
 }
 
+
+
 task main()
 {
 	middleDrive(-35, 100);
 	resetGyro(gyroSensor);
-	moveClaw(-190, 75);
-	fourWheelDrive(950, 50);
-	moveClaw(-240, 75);
+	moveClaw(-210, 75);
+	fourWheelDrive(1050, 50);
+	moveClaw(-260, 75);
 	fourWheelDrive(-950, 75);
-	realign(0.0, 25);
-	middleDrive(745, 50);
-	fourWheelDrive(-455, 50);
+	realign(0.5, 25);
+	middleDrive(743, 50);
+	fourWheelDrive(-467, 50);
 	moveClaw(-230, 75);
-	wait(1, seconds);
-	moveClaw(150, 100);
+	wait(.5, seconds);
+	moveClaw(250, 100);
 	stopAllMotors();
 }

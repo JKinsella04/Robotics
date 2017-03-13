@@ -1,4 +1,3 @@
-
 #pragma config(Sensor, port4,           gyroSensor,     sensorVexIQ_Gyro)
 #pragma config(Motor,  motor1,          leftDriveMotor, tmotorVexIQ, PIDControl, driveLeft, encoder)
 #pragma config(Motor,  motor3,          leftClawMotor, tmotorVexIQ, PIDControl, encoder)
@@ -37,11 +36,8 @@ static void fourWheelCurve(const int ecount, const int speed1, const int speed2)
 
 task main()
 {
-//	moveClaw(-700, 75);
-	middleDrive(770, 75);
-//	fourWheelCurve(-50, 25, 25);
-	fourWheelCurve(-1280, 65, 65);
-
+	middleDrive(790, 100);
+	fourWheelDrive(-1220, 50);
 	stopAllMotors();
 	wait(10, minutes);  // Holds robot in position
 
